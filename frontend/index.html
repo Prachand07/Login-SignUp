@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-in and Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="auth-container">
+        <div class="auth-illustration">
+            <div class="illustration-content">
+                <h1>Sign In</h1>
+                <p>Secure authentication system with advanced features including password history and validation.</p>
+            </div>
+        </div>
+
+        <div class="auth-form-container">
+            <div id="login-form" class="form-switcher visible">
+                <div class="form-header">
+                    <h2>Sign In</h2>
+                    <p>Enter your credentials to access your account</p>
+                </div>
+                <form class="auth-form" id="loginForm">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" class="form-control" placeholder="Enter your email"
+                            required>
+                        <div class="error-message" id="login-email-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <div class="password-input-wrapper">
+                            <input type="password" id="login-password" class="form-control"
+                                placeholder="Enter your password" required>
+                            <button type="button" class="password-toggle"
+                                onclick="togglePassword('login-password')">👁️</button>
+                        </div>
+                        <div class="error-message" id="login-password-error"></div>
+                    </div>
+                    <div class="form-group"
+                        style="flex-direction: row; justify-content: space-between; align-items: center;">
+                        <button type="button" class="btn-link" onclick="showForm('forgot-form')">Forgot
+                            Password?</button>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign In</button>
+                    <div class="form-footer">
+                        Don't have an account? <a href="#" onclick="showForm('signup-form')">Sign Up</a>
+                    </div>
+                </form>
+            </div>
+
+
+            <div id="signup-form" class="form-switcher">
+                <div class="form-header">
+                    <h2>Create Account</h2>
+                    <p>Fill in your details to get started</p>
+                </div>
+                <form class="auth-form" id="signupForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first-name">First Name</label>
+                            <input type="text" id="first-name" class="form-control" placeholder="Aarush" required>
+                            <div class="error-message" id="first-name-error"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" id="last-name" class="form-control" placeholder="Luthra" required>
+                            <div class="error-message" id="last-name-error"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" placeholder="your@email.com" required>
+                        <div class="error-message" id="email-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile">Mobile Number</label>
+                        <input type="tel" id="mobile" class="form-control" placeholder="+91 98245*****" required>
+                        <div class="error-message" id="mobile-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="gender" value="male" checked>
+                                Male
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="gender" value="female">
+                                Female
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="gender" value="other">
+                                Other
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" class="form-control" placeholder="Your city" required>
+                        <div class="error-message" id="city-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Role</label>
+                        <div class="select-wrapper">
+                            <select id="role" class="form-control" disabled>
+                                <option value="employee" selected>Employee</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="password-input-wrapper">
+                            <input type="password" id="password" class="form-control" placeholder="Create a password"
+                                required>
+                            <button type="button" class="password-toggle"
+                                onclick="togglePassword('password')">👁️</button>
+                        </div>
+                        <div class="password-strength">
+                            <div class="password-strength-bar" id="password-strength-bar"></div>
+                        </div>
+                        <div class="password-hint">Use 8+ characters with mix of letters, numbers & symbols</div>
+                        <div class="error-message" id="password-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <div class="password-input-wrapper">
+                            <input type="password" id="confirm-password" class="form-control"
+                                placeholder="Confirm your password" required>
+                            <button type="button" class="password-toggle"
+                                onclick="togglePassword('confirm-password')">👁️</button>
+                        </div>
+                        <div class="error-message" id="confirm-password-error"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create Account</button>
+                    <div class="form-footer">
+                        Already have an account? <a href="#" onclick="showForm('login-form')">Sign In</a>
+                    </div>
+                </form>
+            </div>
+
+            <div id="forgot-form" class="form-switcher">
+                <div class="form-header">
+                    <h2>Forgot Password</h2>
+                    <p>Enter your email to receive a reset link</p>
+                </div>
+                <form class="auth-form" id="forgotForm">
+                    <div class="form-group">
+                        <label for="forgot-email">Email</label>
+                        <input type="email" id="forgot-email" class="form-control" placeholder="your@email.com"
+                            required>
+                        <div class="error-message" id="forgot-email-error"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Reset Link</button>
+                    <div class="form-footer">
+                        Remember your password? <a href="#" onclick="showForm('login-form')">Sign In</a>
+                    </div>
+                </form>
+            </div>
+
+
+            <div id="reset-form" class="form-switcher">
+                <div class="form-header">
+                    <h2>Reset Password</h2>
+                    <p>Create a new password for your account</p>
+                </div>
+                <form class="auth-form" id="resetForm">
+                    <div class="form-group">
+                        <label for="reset-password">New Password</label>
+                        <div class="password-input-wrapper">
+                            <input type="password" id="reset-password" class="form-control"
+                                placeholder="Create a new password" required>
+                            <button type="button" class="password-toggle"
+                                onclick="togglePassword('reset-password')">👁️</button>
+                        </div>
+                        <div class="password-strength">
+                            <div class="password-strength-bar" id="reset-password-strength-bar"></div>
+                        </div>
+                        <div class="password-hint">Use 8+ characters with mix of letters, numbers & symbols</div>
+                        <div class="error-message" id="reset-password-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="reset-confirm-password">Confirm New Password</label>
+                        <div class="password-input-wrapper">
+                            <input type="password" id="reset-confirm-password" class="form-control"
+                                placeholder="Confirm your new password" required>
+                            <button type="button" class="password-toggle"
+                                onclick="togglePassword('reset-confirm-password')">👁️</button>
+                        </div>
+                        <div class="error-message" id="reset-confirm-password-error"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Reset Password</button>
+                    <div class="form-footer">
+                        <a href="#" onclick="showForm('login-form')">Back to Sign In</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
