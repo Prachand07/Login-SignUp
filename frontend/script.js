@@ -137,7 +137,7 @@ document.getElementById('signupForm').addEventListener('submit', async function 
             password
         };
 
-        const response = await fetch('http://localhost:5000/api/signup', {
+        const response = await fetch('https://login-signup-iplp.onrender.com/api/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -196,7 +196,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     if (!isValid) return;
 
     try {
-        const response = await fetch('http://localhost:5000/api/login', {
+        const response = await fetch('https://login-signup-iplp.onrender.com/api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -240,7 +240,7 @@ document.getElementById('forgotForm').addEventListener('submit', async function 
     });
 
     try {
-        const response = await fetch('http://localhost:5000/api/forgot-password', {
+        const response = await fetch('https://login-signup-iplp.onrender.com/api/forgot-password', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -298,7 +298,7 @@ document.getElementById('resetForm').addEventListener('submit', async function (
     if (!isValid) return;
 
     try {
-        const response = await fetch('http://localhost:5000/api/reset-password', {
+        const response = await fetch('https://login-signup-iplp.onrender.com/api/reset-password', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
